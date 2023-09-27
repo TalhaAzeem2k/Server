@@ -1,0 +1,17 @@
+# Use the official Python image as the base image
+FROM python:3.8
+
+# Create a volume and set its path
+VOLUME /clientdata
+
+# Install necessary packages and dependencies
+RUN pip install requests
+
+# Copy client application code into the container
+COPY client_app.py /app/client_app.py
+
+# Set the working directory
+WORKDIR /app
+
+# Command to run the client application
+CMD ["python", "client_app.py"]
